@@ -9,14 +9,17 @@ import { Provider } from 'react-redux';
 
 
 const store = createStore(reducer);
-
+// const unsubscribe = store.subscribe(() =>
+// )
 const render = (Component) => {
   ReactDOM.render(
-    <AppContainer>
-      <HashRouter>
-        <Component/>
-      </HashRouter>
-    </AppContainer>,
+    <Provider store={store}>
+      <AppContainer>
+        <HashRouter>
+          <Component/>
+        </HashRouter>
+      </AppContainer>
+    </Provider>,
     document.getElementById('react-app-root')
   );
 };
